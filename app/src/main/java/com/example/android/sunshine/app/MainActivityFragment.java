@@ -53,7 +53,7 @@ public class MainActivityFragment extends Fragment {
 
         // Get a reference to the ListView, and attach this adapter to it.
         ListView listView = (ListView)rootView.findViewById(
-                R.id.listview_forecat);
+                R.id.listview_forecast);
         listView.setAdapter(forecastAdapter);
 
         return rootView;
