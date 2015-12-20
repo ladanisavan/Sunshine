@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class MainActivityFragment extends Fragment {
 
-    private ArrayAdapter<String> mForecastAdapter;
+    private ArrayAdapter<String> forecastAdapter;
 
     public MainActivityFragment() {
     }
@@ -27,6 +27,7 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
+        // Create some dummy data for the ListView. Here's the sample weekly forecast
         String[] forecastArray = {
                 "Today - Sunny - 88/63",
                 "Tomorrow - Foggy - 70/40",
@@ -40,16 +41,20 @@ public class MainActivityFragment extends Fragment {
         List<String> weekForecast = new ArrayList<String>(
                 Arrays.asList(forecastArray));
 
-        mForecastAdapter = new ArrayAdapter<String>(
-                getActivity(),
-                R.layout.list_item_forecast,
-                R.id.list_item_forecast_textview,
+        // Now that we have some dummy forecast data, create an ArrayAdapter.
+        // The ArrayAdapter will take data from a source (like our dummy forecast) and
+        // use it to populate the ListView it's attached to.
+        forecastAdapter = new ArrayAdapter<String>(
+                getActivity(), // The current context (this activity)
+                R.layout.list_item_forecast, // The name of the layout ID.
+                R.id.list_item_forecast_textview, // The ID of the textview to populate.
                 weekForecast
         );
 
+        // Get a reference to the ListView, and attach this adapter to it.
         ListView listView = (ListView)rootView.findViewById(
                 R.id.listview_forecat);
-        listView.setAdapter(mForecastAdapter);
+        listView.setAdapter(forecastAdapter);
 
         return rootView;
 
